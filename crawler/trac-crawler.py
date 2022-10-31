@@ -17,6 +17,9 @@ def main():
     for keyword in keywords:
         ticket_ids += tracbot.get_ticket_id_by_keyword(keyword)
 
+    ticket_ids = [int(i) for i in ticket_ids]
+    ticket_ids = list(dict.fromkeys(ticket_ids))
+
     for ticket_id in ticket_ids:
         link = None
         author = None
