@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  crawler:
+    image: trac-crawler:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "./export:/app/export"
+    environment:
+      # get credential by `echo -n "USERNAME:PASSWORD" | base64`
+      - CREDENTIAL=
+      - TRAC_PATH=issue.kkinternal.com/trac
+      - TICKET_IDS=1,2,3
+      - KEYWORDS=kktix,kklive
